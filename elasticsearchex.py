@@ -106,7 +106,7 @@ class ElasticSearchEx(object):
             '_op_type': 'index',
             '_index': doc_index,
             '_type': doc_type,
-            '_id': max_id+index+1,
+            '_id': int(max_id)+index+1,
             '_source': data} for index, data in enumerate(data_body)]
         return helpers.bulk(client=self.es, actions=actions, stats_only=True, refresh=True)
 
